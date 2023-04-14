@@ -1,12 +1,16 @@
 export type Product = {
-    "id": string,
-    "name": string,
-    "discount": number,
-    "price": number,
-    "description": string,
-    "image": string,
     "category": string,
+    "collectionId": string,
+    "collectionName": string,
+    "created": Date,
+    "description": string,
+    "discount": number,
+    "id": string,
+    "image": string,
+    "name": string,
+    "price": number,
     "rating": number,
+    "updated": Date;
 }
 
 type ApiResponse = {

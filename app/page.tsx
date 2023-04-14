@@ -1,7 +1,6 @@
 /*
 TD Testimonials
 Interested image? 
-Navbar 
 Responsive 
 Browser compatibale 
 Checkoutpage  (Stripe)
@@ -14,11 +13,12 @@ Productfilter
 */
 import Image from 'next/image'
 import getAllProducts from '@/lib/getAllProducts'
-import Hero from './Components/Hero'
+import Hero from './components/Hero'
 import Link from 'next/link'
 import { BsStarHalf, BsStarFill, BsStar, BsBox2Fill, BsArrowRight } from 'react-icons/bs'
 import { RiPlantFill } from 'react-icons/ri'
 import { MdPhoneEnabled } from 'react-icons/md'
+import { Product } from '@/types'
 
 const getStars = (rating: number) => {
   const fullStars = Math.floor(rating);
@@ -67,7 +67,7 @@ export default async function Home() {
           <svg className="my-auto" width="27" height="27" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.7 10.6C24.7214 6.59338 20.6062 3.85 15.8511 3.85C9.168 3.85 3.75 9.28989 3.75 16M5.1 21.4C7.0786 25.4066 11.1938 28.15 15.9489 28.15C22.632 28.15 28.05 22.7101 28.05 16M11.85 21.4H3.75V29.5M28.05 2.5V10.6H19.95" stroke="#75C32C" strokeWidth="3" /></svg>
           <div className="ml-6">
             <div className="text-lg font-medium text-[#2b2f38]">Free 100% Money Back</div>
-            <div className="text-[#5d6167] mt-1">If the item didn't suit you</div>
+            <div className="text-[#5d6167] mt-1">If the item didn&apos;t suit you</div>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ export default async function Home() {
         <h3 className="text-[#5d6167] mb-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
       </div>
       <div className="w-8/12 grid grid-cols-4 mx-auto">
-        {products.map((product) => (
+        {products.map((product: Product) => (
           <div key={product.id} className="max-w-xs flex flex-col py-4 rounded-md px-3">
             <span className="absolute translate-x-[20%] translate-y-[50%] shadow-xl">{product.discount > 0 && <span className="px-4 py-1 text-[#2b2f38] text-[13px] bg-white w-16 text-center h-6  rounded-[20px] shadow-xl">Sale!</span>}</span>
             <Link href={`/products/${product.id}`}>
@@ -116,7 +116,7 @@ export default async function Home() {
         ))}
       </div>
       <div className="flex">
-        <button className="font-semibold text-sm text-white bg-[#fc5f5f] h-10 w-40 rounded-full my-10 mx-auto">VIEW MORE</button>
+        <Link href="/products" className="mx-auto"><button className="font-semibold text-sm text-white bg-[#fc5f5f] h-10 w-40 rounded-full my-10 mx-auto">VIEW MORE</button></Link>
       </div>
       <section className="w-8/12 mx-auto mt-36 mb-48 flex">
         <div className="flex flex-col max-w-xs">
@@ -128,7 +128,12 @@ export default async function Home() {
           <div>Ornare integer commodo mauris et ligula purus, praesent cubilia laboriosam viverra. Mattis id rhoncus. Integer lacus eu volutpat fusce. Elit etiam phasellus suscipit suscipit dapibus, condimentum tempor quis, turpis luctus dolor sapien vivamus.</div>
         </div>
       </section>
-      <section className="w-8/12 mx-auto">Testimonials</section>
+      <section className="w-8/12 mx-auto">
+        <div className="flex">
+            <div>1</div>
+            <div>2</div>
+        </div>
+      </section>
       <section className="w-8/12 mx-auto">Interested? Shop This Plant Collection!</section>
     </>
   )

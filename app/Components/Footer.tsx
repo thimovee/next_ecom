@@ -32,7 +32,7 @@ const Footer = () => {
                     <li>Introduction</li>
                     <li>Know more about us</li>
                     <li>Visit store</li>
-                    <li>Let's connect</li>
+                    <li>Let&apos;s connect</li>
                 </ul>
             </div>
             <div className="w-1/4">
@@ -47,7 +47,7 @@ const Footer = () => {
             <div className="w-1/4">
                 <span className="text-[#2b2f38] text-xl">Get In Touch With Us</span>
                 <ul className="mt-8 text-[#5d6167]">
-                    <li className="flex"><IoLocationSharp className="my-auto mr-2"/>1234 AB, Tiel</li>
+                    <li className="flex"><IoLocationSharp className="my-auto mr-2"/>1234 AB Tiel</li>
                     <li className="flex"><MdPhoneEnabled className="my-auto mr-2"/>+31612345678</li>
                     <li className="flex"><GoMail className="my-auto mr-2"/>simplynatural@gmail.com</li>
                 </ul>
