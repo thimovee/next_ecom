@@ -1,45 +1,13 @@
-/*
-TD Testimonials
-Interested image? 
-Responsive 
-Browser compatibale 
-Checkoutpage  (Stripe)
-Cartsytem/useContext 
-Productpage (params: id)
-Loginsystem OAuth pw&email pb  
-Security 
-Categorypage 
-Productfilter 
-*/
 import Image from 'next/image'
 import getAllProducts from '@/lib/getAllProducts'
 import Hero from './components/Hero'
 import Link from 'next/link'
-import { BsStarHalf, BsStarFill, BsStar, BsBox2Fill, BsArrowRight } from 'react-icons/bs'
+import { BsBox2Fill, BsArrowRight } from 'react-icons/bs'
 import { RiPlantFill } from 'react-icons/ri'
 import { MdPhoneEnabled } from 'react-icons/md'
 import { Product } from '@/types'
-
-const getStars = (rating: number) => {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating - fullStars >= 0.5;
-  const emptyStars = 5 - Math.ceil(rating);
-  const stars = [];
-
-  for (let i = 0; i < fullStars; i++) {
-    stars.push(<BsStarFill className="h-[14px] text-[#2b2f38]" />);
-  }
-
-  if (halfStar) {
-    stars.push(<BsStarHalf className="h-[14px] text-[#2b2f38]" />);
-  }
-
-  for (let i = 0; i < emptyStars; i++) {
-    stars.push(<BsStar className="h-[14px] text-[#2b2f38]" />);
-  }
-
-  return stars;
-};
+import { getStars } from './components/getStars'
+import Testimonials from './components/Testimonials'
 
 export default async function Home() {
   const productsData = await getAllProducts()
@@ -72,7 +40,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="w-8/12 mx-auto mt-10 mb-24 flex justify-between">
-        <div className='w-1/3 bg-[#efeef4] rounded-xl flex flex-col shadow-lg'>
+        <div className='w-1/3 bg-[#eeeeee] rounded-xl flex flex-col shadow-lg'>
           <Image src="https://images.unsplash.com/photo-1681381809162-fa8188546501?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt={products[0].name} width={280} height={280} className="mx-auto" />
           <div className="mt-10 w-[280px] flex flex-col mx-6">
             <span className="font-medium text-xl text-[#2b2f38]">Beautiful Plant Varieties</span>
@@ -102,7 +70,7 @@ export default async function Home() {
         <h3 className="text-[#5d6167] mb-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
       </div>
       <div className="w-8/12 grid grid-cols-4 mx-auto">
-        {products.map((product: Product) => (
+        {products.slice(0, 6).map((product: Product) => (
           <div key={product.id} className="max-w-xs flex flex-col py-4 rounded-md px-3">
             <span className="absolute translate-x-[20%] translate-y-[50%] shadow-xl">{product.discount > 0 && <span className="px-4 py-1 text-[#2b2f38] text-[13px] bg-white w-16 text-center h-6  rounded-[20px] shadow-xl">Sale!</span>}</span>
             <Link href={`/products/${product.id}`}>
@@ -128,14 +96,8 @@ export default async function Home() {
           <div>Ornare integer commodo mauris et ligula purus, praesent cubilia laboriosam viverra. Mattis id rhoncus. Integer lacus eu volutpat fusce. Elit etiam phasellus suscipit suscipit dapibus, condimentum tempor quis, turpis luctus dolor sapien vivamus.</div>
         </div>
       </section>
-      <section className="w-8/12 mx-auto">
-        <div className="flex">
-            <div>1</div>
-            <div>2</div>
-        </div>
-      </section>
+      <Testimonials />
       <section className="w-8/12 mx-auto">Interested? Shop This Plant Collection!</section>
     </>
   )
 }
-

@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <Navbar/>
+        <Navbar />
         <div className="min-h-screen">
           {children}
         </div>
-        <Footer/>
-        </body>
+        <Footer />
+      </body>
     </html>
   )
 }
